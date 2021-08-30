@@ -12,9 +12,9 @@ class Solution:
             cur_prob, cur = heapq.heappop(heap)
             if cur == end :
                 return -cur_prob
-            #if not g.get(cur):
-            for neighbor,idx in g.get(cur,[]):
-                if p[neighbor] < succProb[idx]*p[cur] : 
-                    p[neighbor] = succProb[idx]*p[cur]
-                    heapq.heappush(heap,(-p[neighbor],neighbor))
+            if g.get(cur) is not None:
+                for neighbor,idx in g.get(cur,[]):
+                    if p[neighbor] < succProb[idx]*p[cur] : 
+                        p[neighbor] = succProb[idx]*p[cur]
+                        heapq.heappush(heap,(-p[neighbor],neighbor))
         return 0.0
