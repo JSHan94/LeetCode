@@ -6,20 +6,29 @@
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         def reverseChunk(head):
-            res = ListNode()
-            prev, cur = head,head.next#chunk, chunk.next
-            temp = ListNode(prev.val)
-            new_head = None
-            while True:
-                new_head = ListNode(cur.val)
-                new_head.next = temp
-                temp = new_head
-                if not cur.next:
-                    break
-                prev = cur
-                cur = cur.next
-            res.next = temp
-            return res.next
+            if not head or not head.next:
+                return head
+            
+            p = reverseChunk(head.next)
+            head.next.next = head
+            head.next = None
+            return p
+            
+            # res = ListNode()
+            # prev, cur = head,head.next#chunk, chunk.next
+            # temp = ListNode(prev.val)
+            # new_head = None
+            # while True:
+            #     new_head = ListNode(cur.val)
+            #     new_head.next = temp
+            #     temp = new_head
+            #     if not cur.next:
+            #         break
+            #     prev = cur
+            #     cur = cur.next
+            # res.next = temp
+            # return res.next
+            
         
         if k == 1:
             return head
