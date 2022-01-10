@@ -5,6 +5,6 @@ class Solution:
         while r < len(nums) - 1:
             nJumps += 1
             furthest = max([i + nums[i] for i in range(l,r+1)])
-            l,r = r+1, furthest
+            l,r = r, furthest
 
         return nJumps
