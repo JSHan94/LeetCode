@@ -1,27 +1,11 @@
-impl Solution {
-    pub fn convert(s: String, num_rows: i32) -> String {
-        if num_rows < 2 {
-            return s.into() ;
-        }
-        let num_rows = num_rows as usize;
-        let mut strs = vec![String::new() ; num_rows];
-        let mut row = 0;
-        let mut down = true;
-        for c in s.chars(){
-            strs[row].push(c);
-            if down {
-               row =  row + 1;
-            }else{
-               row =  row - 1;
-            }
-            if (row > 0 && row < num_rows-1) == down{
-                down = true;
-            }else{
-                down = false;
-            }
-        }
+class Solution:
+    def reverse(self, x: int) -> int:
         
-        strs.concat()
-        
-    }
-}
+        if str(x)[0] == "-":
+            res= -int(str(abs(x))[::-1])
+        else : 
+            res = int(str(abs(x))[::-1])
+    
+        if res > pow(2,31) or res < pow(-2,31) :
+            return 0
+        return res
